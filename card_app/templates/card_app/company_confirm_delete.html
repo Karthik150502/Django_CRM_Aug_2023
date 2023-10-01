@@ -1,0 +1,30 @@
+{% extends 'card_app/application_base.html' %}
+
+{% block extrahead %}
+
+{% endblock %}
+
+
+
+
+{% block content %}
+    <br>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <h3>Do you want to delete {{company_detail.name}}?</h3>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <p>
+                        <input type="submit" class="btn btn-danger" value="delete">
+                        <a href="{% url 'card_app:list' %}" class="btn btn-warning">Cancel</a>
+                    </p>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

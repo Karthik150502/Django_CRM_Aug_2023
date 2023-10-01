@@ -1,0 +1,52 @@
+{% extends 'card_app/application_base.html' %}
+
+    {% block content %}
+
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-12">   
+                    <h1>Company details are here...!!</h1>
+                    <p>Company name: {{company_detail.name}}</p>
+                    <p>CEO: {{company_detail.ceo}}</p>
+                    <p>Origin: {{company_detail.origin}}</p>
+                    <p>
+                        <center>
+                            <a class="btn btn-warning" href="{% url 'card_app:update' pk=company_detail.pk  %}">Update</a>   
+                            <a class="btn btn-danger" href="{% url 'card_app:delete' pk=company_detail.pk %}">Delete</a>
+                            <a href="{% url 'card_app:p_create' %}" class="btn btn-success">Add product</a>
+                        </center>
+                    </p>
+                    <hr>
+                    <br>
+                </div>
+                <h1>Product details are here...!!</h1>
+                <div class="row">
+                    {% for data in company_detail.companies.all %}
+                    <div class="col-md-4">
+                        <div class="card card-body">
+                            <p>Name: <b>{{data.product_name}}</b></p>
+                            <p>Milleage, kmpl: <b>{{data.mileage}}</b></p>
+                            <p>CC: <b>{{data.cc}}</b></p>
+                            <p>Price: <b>{{data.price}}</b></p>
+                            <p>Colors: <b>{{data.color}}</b></p>
+                            <p>Year of release: <b>{{data.year}}</b></td>
+                            <br>
+                            <br>
+                            <center>
+                                <a class="btn btn-warning" href="{% url 'card_app:p_update' pk=data.pk %}">Update</a>
+                                <a class="btn btn-danger" href="{% url 'card_app:p_delete' pk=data.pk %}">Delete</a>
+                            </center>
+                        </div>
+                        <br>
+                    </div>
+                    {% endfor %} 
+                </div>        
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}
+
+
